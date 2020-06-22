@@ -37,6 +37,7 @@ jobs:
     # Install Surge
     - run: npm install -g surge
     
+    
     # Deploy to surge
     - name: Surge Deployment
       run: surge ./build Expense_Tracker_By_Muhammad_Baqir.surge.sh --token ${{gsecrets.SURGE_TOKEN}}
