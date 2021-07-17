@@ -4,12 +4,14 @@ import {GlobalContext} from '../context/GlobalState';
 export const IncomeExpenses = () => {
   const {transactions} = useContext(GlobalContext);
 
+  // Get amounts list
   const amounts = transactions.map(transaction => transaction.amount);
+  // Calculate total income
   const income = amounts
     .filter(item => item > 0)
     .reduce((acc, item) => (acc += item), 0)
     .toFixed(2);
-
+  // Calculate total expenses and make it positive
   const expense = (
     amounts.filter(item => item < 0).reduce((acc, item) => (acc += item), 0) *
     -1

@@ -4,7 +4,9 @@ import {GlobalContext} from '../context/GlobalState';
 export const Balance = () => {
   const {transactions} = useContext(GlobalContext);
   
+  // Create new amount list of all the transactions
   const amounts = transactions.map(transaction => transaction.amount);
+  // Find total of all amounts
   const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
 
   return (

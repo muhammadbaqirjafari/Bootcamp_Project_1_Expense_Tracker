@@ -2,20 +2,28 @@ import React, {useState, useContext} from 'react'
 import {GlobalContext} from '../context/GlobalState';
 
 export const AddTransaction = () => {
+    // Two states for storing amount entered and text entered
     const [text, setText] = useState('');
     const [amount, setAmount] = useState(0);
     
+    // Desctructuring addTransaction callBack fn
     const {addTransaction} = useContext(GlobalContext);
 
     function onSubmit(e) {
         e.preventDefault();
 
+        // Creating new Transaction
         const newTransaction = {
-            id: Math.floor(Math.random()* 100000000),
+            id: Math.floor(Math.random()* 100000000), // Random ID
             text,
-            amount: +amount
+            amount: +amount // Plus before the var means it is number variable
         }
 
+        // Clearing Form
+        if(text) setText('');
+        if(amount) setAmount(0);
+
+        // Adding it to transactions list
         addTransaction(newTransaction);
     }
 
